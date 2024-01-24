@@ -6,8 +6,6 @@ function App() {
     <div className="container">
       <div className="App">
         <h1 className="header"> My Weather App</h1>
-        <br />
-
         <input
           className="input"
           type="search"
