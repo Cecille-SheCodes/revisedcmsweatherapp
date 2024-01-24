@@ -6,14 +6,7 @@ function App() {
     <div className="container">
       <div className="App">
         <h1 className="header"> My Weather App</h1>
-        <input
-          className="input"
-          type="search"
-          placeholder="&#128269; Type City"
-          autoFocus="on"
-        />
-
-        <input type="submit" value="Search" className="btn btn-primary" />
+        <Weather defaultCity="Munich" />
         <br />
         <p className="links">
           Designed by{" "}
