@@ -7,7 +7,7 @@ function App() {
     <div className="container">
       <div className="App">
         <h1 className="header"> My Weather App</h1>
-        <Weather defaultCity="Munich" />
+        <Weather defaultCity="Munich"/>
         <br />
         <p className="links">
           Designed by{" "}
