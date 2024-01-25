@@ -1,13 +1,13 @@
 
 import './App.css';
-import Weather from './Weather.js';
+import WeatherSearch from './WeatherSearch.js';
 
 function App() {
   return (
     <div className="container">
       <div className="App">
         <h1 className="header"> My Weather App</h1>
-        <Weather defaultCity="Munich"/>
+        <WeatherSearch defaultCity="Munich"/>
         <br />
         <p className="links">
           Designed by{" "}

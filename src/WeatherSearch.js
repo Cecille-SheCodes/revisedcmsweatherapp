@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
 
-export default function Weather(props) {
+export default function WeatherSearch(props) {
   const [city, setCity] = useState(props.defaultCity);
   const [loaded, setLoaded] = useState(false);
   const [weather, setWeather] = useState({});
