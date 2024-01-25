@@ -64,7 +64,7 @@ export default function WeatherSearch(props) {
       </div>
     );
   } else {
-    handleSubmit();
+    
     return (
       <div>
         {form}
