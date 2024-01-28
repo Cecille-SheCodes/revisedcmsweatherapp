@@ -13,7 +13,7 @@ export default function WeatherSearch(props) {
     setLoaded(true);
     setWeather({
       date: new Date(response.data.dt * 1000),
-      timezone:response.data.timezone,
+      timezone: response.data.timezone,
       city: response.data.name,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
@@ -21,7 +21,8 @@ export default function WeatherSearch(props) {
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
     });
-  }
+      }
+ 
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -34,7 +35,11 @@ function updateCity(event) {
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e41d480a236e63c3ed66acc7310d68f6&units=metric`;
     axios
       .get(url)
-      .then(handleResponse);}
+      .then(handleResponse)
+      .catch(error => {
+    console.log('Error:', error);
+  });
+     }
  
 
   let form = (
