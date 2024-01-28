@@ -13,6 +13,7 @@ export default function WeatherSearch(props) {
     setLoaded(true);
     setWeather({
       date: new Date(response.data.dt * 1000),
+      timezone:response.data.timezone,
       city: response.data.name,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
@@ -63,6 +64,7 @@ function updateCity(event) {
         {form}
         <br />
         <WeatherInfo data={weather} />
+
       </div>
     );
   } else {

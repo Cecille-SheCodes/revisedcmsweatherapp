@@ -10,8 +10,8 @@ export default function WeatherInfo(props) {
     <div className="weatherNow">
       <div className="overview">
         <h1>{props.data.city}</h1>
-        <p>
-          <FormattedDate date={props.data.date} />
+            <p>
+          <FormattedDate date={props.data.date} timezone={props.data.timezone} />
         </p>
       </div>
 

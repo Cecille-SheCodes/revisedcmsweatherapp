@@ -1,28 +1,43 @@
 import React from "react";
 
 export default function FormattedDate(props) {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = days[props.date.getDay()];
-  let hours = props.date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
+  
+  let timezone = props.timezone;
+  let now = new Date();
+  let d = now.getTime();
+  let nd = new Date(d + 1000 * timezone);
+let dateString = nd.toLocaleDateString("en-US", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+});
+let options = { weekday: "long" };
+let weekdays = nd.toLocaleDateString(
+  "en-US",
+  options
+);
+  let time = nd.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
-  let minutes = props.date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
+
+  let timezoneOffset = props.timezone;
+ let currentDate = new Date();
+    let currentTimezoneOffset = currentDate.getTimezoneOffset() * 60; // Convert minutes to seconds
+   let currentTimestamp = currentDate.getTime() / 1000; // Convert milliseconds to seconds
+   let timezoneTime = currentTimestamp + timezoneOffset + currentTimezoneOffset;
+
+   // Convert the timezone time into a human-readable format
+ 
+
+
+
+
   return (
     <div>
-      {day} {hours}:{minutes}
+       {dateString} <br />
+       {weekdays}{" "}{time} 
     </div>
   );
 }
