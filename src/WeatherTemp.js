@@ -38,10 +38,10 @@ if (unit === "celsius") {
         <strong>{Math.round(fahrenheit())}</strong>
       </span>{" "}
       <span className="units">
-        <a href="/" onClick={showCelsius}>
+        °F{" "}
+        | <a href="/" onClick={showCelsius}>
           °C
-        </a>{" "}
-        | °F
+        </a>
       </span>
     </div>
   );

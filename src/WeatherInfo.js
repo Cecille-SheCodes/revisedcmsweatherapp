@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import FormattedDate from "./FormattedDate.js";
-import "./Wind.png";
 import WeatherTemp from "./WeatherTemp.js";
 import WeatherIcon from "./WeatherIcon";
 
@@ -10,7 +9,7 @@ export default function WeatherInfo(props) {
     <div className="weatherNow">
       <div className="overview">
         <h1>{props.data.city}</h1>
-            <p>
+              <p>
           <FormattedDate date={props.data.date} timezone={props.data.timezone} />
         </p>
       </div>
@@ -30,7 +29,7 @@ export default function WeatherInfo(props) {
       <div className="row ">
         <div className="col-md">
           <p className="humidityWind">
-            💧{""} {Math.round(props.data.humidity)}%
+            💦{""} {Math.round(props.data.humidity)}%
           </p>
         </div>
         <div className="col-md">
