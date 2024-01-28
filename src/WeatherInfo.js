@@ -3,6 +3,8 @@ import "./App.css";
 import FormattedDate from "./FormattedDate.js";
 import "./Wind.png";
 import WeatherTemp from "./WeatherTemp.js";
+import WeatherIcon from "./WeatherIcon";
+
 export default function WeatherInfo(props) {
   return (
     <div className="weatherNow">
@@ -13,15 +15,16 @@ export default function WeatherInfo(props) {
         </p>
       </div>
 
-      <WeatherTemp celsius={props.data.temperature}/>
+      <WeatherTemp celsius={props.data.temperature} />
 
       <p className="description text-capitalize">
         <img
           src={`https://openweathermap.org/img/wn/${props.data.icon}.png`}
           alt={props.data.description}
-         
         />{" "}
         {props.data.description}
+        {" "}
+        <WeatherIcon code={props.data.icon} size={30} />
       </p>
 
       <div className="row ">

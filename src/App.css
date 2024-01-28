@@ -73,11 +73,11 @@ searchForm{
 
 }
 
- .WeatherNow img {
-  margin-right: 5px;
-  line-height: 80px;
-  height: 80px;
-  width: 80px;
+canvas {
+ text-align: justify;
+ position: relative;
+ top: 10px;
+ 
 }
 .Temperature{
   font-size: 65px;
