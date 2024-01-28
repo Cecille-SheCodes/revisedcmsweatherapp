@@ -8,31 +8,33 @@ export default function WeatherSearch(props) {
   const [loaded, setLoaded] = useState(false);
   const [weather, setWeather] = useState({});
 
+  
+  function handleResponse(response) {
+    setLoaded(true);
+    setWeather({
+      date: new Date(response.data.dt * 1000),
+      city: response.data.name,
+      temperature: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      wind: response.data.wind.speed,
+      description: response.data.weather[0].description,
+      icon: response.data.weather[0].icon,
+    });
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
+    search();}
+
+function updateCity(event) {
+  setCity(event.target.value);
+}
+    function search() {
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e41d480a236e63c3ed66acc7310d68f6&units=metric`;
     axios
       .get(url)
-      .then((response) => {
-        setLoaded(true);
-        setWeather({
-          date: new Date(response.data.dt * 1000),
-          city: response.data.name,
-          temperature: response.data.main.temp,
-          humidity: response.data.main.humidity,
-          wind: response.data.wind.speed,
-          description: response.data.weather[0].description,
-          icon: response.data.weather[0].icon,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  function updateCity(event) {
-    setCity(event.target.value);
-  }
+      .then(handleResponse);}
+ 
 
   let form = (
     <form className="mb-3 ">
@@ -64,12 +66,13 @@ export default function WeatherSearch(props) {
       </div>
     );
   } else {
-    
+    search();
     return (
-      <div>
-        {form}
-        <p>Please provide a valid city name. </p>
-      </div>
+          <div>
+          {form}
+          <p>Please provide a valid city name.</p>
+        </div>
+  
     );
   }
 }
