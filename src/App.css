@@ -41,6 +41,7 @@ h1 {
   line-height: 28px;
   margin-bottom: 0;
   text-align:center;
+  
 }
 h2{
   line-height: 28px;
@@ -67,10 +68,10 @@ searchForm{
   background-color: rgb(249, 248, 249);
   box-shadow: none;
 }
-
-.WeatherNow .overview {
-  margin-bottom: 45px;
-
+ .date {
+  margin-bottom: 15px;
+  font-size: 15px;
+  opacity: 90%;
 }
 
 canvas {

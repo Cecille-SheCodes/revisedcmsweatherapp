@@ -2,17 +2,18 @@ import "./App.css";
 import React, { useState } from "react";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 
 export default function WeatherSearch(props) {
   const [city, setCity] = useState(props.defaultCity);
   const [loaded, setLoaded] = useState(false);
   const [weather, setWeather] = useState({});
 
-  
   function handleResponse(response) {
+   
     setLoaded(true);
     setWeather({
-      date: new Date(response.data.dt * 1000),
+      date: new Date(response.data.dt*1000),
       timezone: response.data.timezone,
       city: response.data.name,
       temperature: response.data.main.temp,
@@ -20,27 +21,28 @@ export default function WeatherSearch(props) {
       wind: response.data.wind.speed,
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
-    });
-      }
- 
+      coord: response.data.coord,
+    }); console.log(response);
+  }
+
 
   function handleSubmit(event) {
     event.preventDefault();
-    search();}
+    search();
+  }
 
-function updateCity(event) {
-  setCity(event.target.value);
-}
-    function search() {
+  function updateCity(event) {
+    setCity(event.target.value);
+  } //
+  function search() {
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e41d480a236e63c3ed66acc7310d68f6&units=metric`;
     axios
       .get(url)
       .then(handleResponse)
-      .catch(error => {
-    console.log('Error:', error);
-  });
-     }
- 
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  }
 
   let form = (
     <form className="mb-3 ">
@@ -67,19 +69,17 @@ function updateCity(event) {
     return (
       <div>
         {form}
-        <br />
         <WeatherInfo data={weather} />
-
+        <WeatherForecast coordinates={weather.coord} />
       </div>
     );
   } else {
     search();
     return (
-          <div>
-          {form}
-          <p>Please provide a valid city name.</p>
-        </div>
-  
+      <div>
+        {form}
+        <p>Please provide a valid city name.</p>
+      </div>
     );
   }
 }
