@@ -10,21 +10,20 @@ export default function WeatherInfo(props) {
       <div className="overview">
         <h1>{props.data.city}</h1>
         <div className="date">
-          <FormattedDate date={props.data.date} timezone={props.data.timezone} />
+          <FormattedDate coordinates={props.data.coord} />
         </div>
       </div>
-      <br/>
-      
+      <br />
+
       <div>
-      <WeatherTemp celsius={props.data.temperature} />
+        <WeatherTemp celsius={props.data.temperature} />
       </div>
       <p className="description text-capitalize">
         <img
           src={`https://openweathermap.org/img/wn/${props.data.icon}.png`}
           alt={props.data.description}
         />{" "}
-        {props.data.description}
-        {" "}
+        {props.data.description}{" "}
         <WeatherIcon code={props.data.icon} size={30} color={"white"} />
       </p>
 
